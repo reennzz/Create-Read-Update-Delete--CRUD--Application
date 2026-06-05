@@ -1,93 +1,118 @@
-# Laravel CRUD Product Application
+# Laravel Product CRUD App
 
-Aplikasi CRUD sederhana berbasis Laravel untuk mengelola data produk. Aplikasi ini memiliki tampilan dashboard produk yang lebih rapi, form tambah/edit produk, serta fitur hapus produk.
+A simple Laravel application for managing products. It supports basic CRUD features: create, read, update, and delete product data.
 
-## Fitur
+## Features
 
-- Menampilkan daftar produk
-- Menambahkan produk baru
-- Mengubah data produk
-- Menghapus produk
-- Validasi input produk
-- Dashboard ringkas berisi total produk, total stok, dan estimasi nilai produk
-- UI responsif dengan CSS statis di `public/product-ui.css`
+- View all products
+- Add a new product
+- Edit an existing product
+- Delete a product
+- Validate product input
+- Show simple dashboard stats:
+  - Total products
+  - Total stock
+  - Estimated product value
+- Clean responsive UI using plain CSS
 
 ## Tech Stack
 
 - PHP 8.2
 - Laravel 12
-- MySQL atau SQLite
 - Blade
 - CSS
+- MySQL or SQLite
 - Pest / PHPUnit
 
-## Struktur Utama
+## Main Files
 
-- `app/Models/Product.php` untuk model produk
-- `app/Http/Controllers/ProductController.php` untuk logic CRUD
-- `resources/views/products/index.blade.php` untuk halaman daftar produk
-- `resources/views/products/create.blade.php` untuk halaman tambah produk
-- `resources/views/products/edit.blade.php` untuk halaman edit produk
-- `public/product-ui.css` untuk styling halaman CRUD produk
-- `database/migrations/2026_06_05_114647_create_products_table.php` untuk tabel produk
+- `app/Models/Product.php`  
+  Product model.
 
-## Instalasi
+- `app/Http/Controllers/ProductController.php`  
+  Handles product CRUD logic.
 
-Clone atau buka folder project ini, lalu jalankan:
+- `resources/views/products/index.blade.php`  
+  Product list and dashboard page.
+
+- `resources/views/products/create.blade.php`  
+  Form page for creating a product.
+
+- `resources/views/products/edit.blade.php`  
+  Form page for editing a product.
+
+- `public/product-ui.css`  
+  Custom CSS for the product pages.
+
+- `database/migrations/2026_06_05_114647_create_products_table.php`  
+  Migration for the products table.
+
+## Installation
+
+Install PHP dependencies:
 
 ```bash
 composer install
 ```
 
-Salin file environment:
+Create the `.env` file:
 
 ```bash
 cp .env.example .env
 ```
 
-Generate application key:
+Generate the application key:
 
 ```bash
 php artisan key:generate
 ```
 
-Atur koneksi database di file `.env`, lalu jalankan migration:
+Set your database configuration in `.env`, then run:
 
 ```bash
 php artisan migrate
 ```
 
-## Menjalankan Aplikasi
+## Run the App
 
-Jalankan server Laravel:
+Start the Laravel server:
 
 ```bash
 php artisan serve
 ```
 
-Buka aplikasi di browser:
+Open this URL in your browser:
 
 ```text
 http://127.0.0.1:8000/product
 ```
 
-## Route Produk
+## Product Routes
 
-| Method | URL | Nama Route | Fungsi |
+| Method | URL | Route Name | Description |
 | --- | --- | --- | --- |
-| GET | `/product` | `product.index` | Menampilkan daftar produk |
-| GET | `/product/create` | `product.create` | Menampilkan form tambah produk |
-| POST | `/product` | `product.store` | Menyimpan produk baru |
-| GET | `/product/{product}/edit` | `product.edit` | Menampilkan form edit produk |
-| PUT | `/product/{product}/update` | `product.update` | Menyimpan perubahan produk |
-| DELETE | `/product/{product}/delete` | `product.delete` | Menghapus produk |
+| GET | `/product` | `product.index` | Show all products |
+| GET | `/product/create` | `product.create` | Show create product form |
+| POST | `/product` | `product.store` | Save a new product |
+| GET | `/product/{product}/edit` | `product.edit` | Show edit product form |
+| PUT | `/product/{product}/update` | `product.update` | Update a product |
+| DELETE | `/product/{product}/delete` | `product.delete` | Delete a product |
 
-## Menjalankan Test
+## Product Fields
+
+Each product has:
+
+- `name`
+- `quantity`
+- `price`
+- `description`
+
+## Run Tests
 
 ```bash
 php artisan test --compact
 ```
 
-## Catatan UI
+## UI Note
 
-Halaman CRUD produk menggunakan file CSS statis `public/product-ui.css`, sehingga tampilan dapat langsung digunakan tanpa menjalankan `npm run dev` atau `npm run build`.
+The product pages use `public/product-ui.css`, so the UI works without running `npm run dev` or `npm run build`.
